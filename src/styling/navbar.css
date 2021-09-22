@@ -1,0 +1,21 @@
+.navbar{
+    background-color: rgb(243, 155, 40);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+
+.navbar a h1{
+    margin-left: 200px;
+}
+.log-reg{
+    display: flex;
+}
+.log-reg a h2{
+    margin-right: 100px;
+}

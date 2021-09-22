@@ -1,0 +1,24 @@
+.landing-page{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+.project-section{
+    width: 500px;
+    margin-left: 200px;
+    background-color: white;
+    padding: 50px;
+}
+.project-section p{
+    background-color: grey;
+    color: white;
+    padding: 20px;
+}
+.tasks-section{
+    margin-right: 200px;
+    background-color: white;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
