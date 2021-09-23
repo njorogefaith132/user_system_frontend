@@ -1,8 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styling/dashboard.css'
+import '../styling/navbar.css'
 
 const Dashboard = () => {
     return (
+        <div>
+        <div className="navbar">
+           <Link to="/" ><h1>User System</h1></Link>
+           <div className="log-reg">
+           <Link to="/task"><h2>Add Tasks</h2></Link>
+
+           </div>
+        </div>
         <div className="landing-page">
             <div className="project-section">
                 <h3>Project Details</h3>
@@ -20,6 +30,7 @@ const Dashboard = () => {
                 </ul>
             </div>
 
+        </div>
         </div>
     )
 }

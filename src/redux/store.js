@@ -1,9 +1,10 @@
 // import { configureStore } from "@reduxjs/toolkit";
 
-import userreducer from "./reducers/userreducer";
 import userReducer from  './reducers/user'
+import projectReducer from "./reducers/project";
 import { combineReducers, applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
+import taskReducer from './reducers/task';
 
 
 
@@ -11,7 +12,9 @@ import thunk from "redux-thunk";
 export default function configureStore(){
     const store = createStore(
         combineReducers({
-            user: userReducer
+            user: userReducer,
+            project: projectReducer,
+            task: taskReducer
         }),
         applyMiddleware(thunk)
     )
