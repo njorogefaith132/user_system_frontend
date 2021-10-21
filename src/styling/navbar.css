@@ -10,7 +10,7 @@
     color: white;
 }
 
-.navbar a h1{
+.navbar a h1,.navbar a h4{
     margin-left: 200px;
 }
 .log-reg{

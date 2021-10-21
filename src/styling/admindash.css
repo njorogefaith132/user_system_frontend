@@ -1,0 +1,9 @@
+.project-section{
+    display: flex;
+}
+.project{
+    margin:20px;
+    border: grey 1px solid;
+    padding: 50px;
+    text-align: center;
+}

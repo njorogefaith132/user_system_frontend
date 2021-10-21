@@ -8,6 +8,8 @@ import Task from './component/Task'
 import Projects from './component/Projects';
 import { Link } from 'react-router-dom';
 import Home from './component/Home';
+import Admin from './component/Admin';
+import TasksDisplay from './component/TasksDisplay';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
         <Route exact path="/register" component={Registration} /> 
         <Route exact path="/login" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/admindashboard" component={Admin} />
+        <Route path="/tasks" component={TasksDisplay} />
         <Route path="/task" component={Task} />
         <Route path="/project" component={Projects} />
 
