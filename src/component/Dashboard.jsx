@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import '../styling/dashboard.css'
 import '../styling/navbar.css'
 
 const Dashboard = () => {
+    const history = useHistory();
+
+
+        if(localStorage.length === 0 ) {
+            history.push('/login')
+        }
+       
+   
     return (
         <div>
         <div className="navbar">

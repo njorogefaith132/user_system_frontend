@@ -9,7 +9,6 @@
 .login-form form{
     border: 1px solid lightgray;
     padding: 100px;
-    background-color: white;
     display: flex;
     flex-direction: column;
 }
@@ -21,10 +20,9 @@
     font-weight: bold;
 }
 .login-form form button{
-    background-color: rgb(255, 145, 0);
+    background-color:lightblue;
     border: none;
     padding: 10px 0;
-    color: white;
     margin-top: 50px;
     font-size: 15px;
 }

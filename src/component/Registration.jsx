@@ -1,57 +1,86 @@
-import React from 'react'
-import '../styling/registration.css'
-import {useState} from  'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from "react";
+import "../styling/registration.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addingUser } from "../redux/actions/user";
+import Navbar from "./Navbar";
 
 const Registration = () => {
-    const [usernamereg, setUsernamereg] = useState("")
-    const [passwordreg, setPasswordreg] = useState("")
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-    const register = () =>{
-        axios.post("http://localhost:5001/users/register",{
+  const state = useSelector((state) => state.user);
+  console.log(state);
 
-            username: usernamereg,
-            password: passwordreg
-        }
-        ).then(response =>{
-            console.log(response);
-        })
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    usertype: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addingUser(user));
+  };
+  const onChange = (e) => {
+    setUser((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const ischecked = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: [e.target.checked] }));
+  };
+
+  useEffect(() => {
+    if (state?.user?.username) {
+      history.push("/dashboard");
+    } else {
+      console.log("hi");
     }
+    console.log("<<<<<<<<<<<", state.user.username);
+  }, [state?.user?.username]);
 
-    return (
-        <div>
-        <div className="navbar">
-           <Link to="/" ><h1>User System</h1></Link>
-           <div className="log-reg">
-           <Link to="/login"><h2>Login</h2></Link>
+  return (
+    <div>
+      <Navbar>
+        <Link to="/login">
+          <h2>Login</h2>
+        </Link>
+      </Navbar>
+      <div className="registration-form">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="">Username</label>
+          <input
+            type="text"
+            name="username"
+            onChange={onChange}
+            placeholder="input username"
+          />
+          <label htmlFor="">Password</label>
+          <input
+            type="text"
+            name="password"
+            onChange={onChange}
+            placeholder="input password"
+          />
+          <input
+            type="checkbox"
+            name="admin"
+            // checked={ischecked}
+            onChange={ischecked}
+            placeholder="input password"
+          />
+          <span>Admin</span>
 
-           </div>
-        </div>
-        <div className="registration-form">
-             <form onSubmit={(e) =>{
-                 e.preventDefault()
-             }}>
-            <label htmlFor="">Username</label>
-            <input type="text"  
-            onChange={(e) =>{
-               setUsernamereg(e.target.value)
-            }} 
-            placeholder="input username" />
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-            <label htmlFor="">Password</label>
-            <input type="text" 
-            onChange={(e) =>{
-                setPasswordreg(e.target.value)
-             }} 
-            placeholder="input password" />
-
-
-            <button onClick={register}>Register</button>
-            </form>
-        </div>
-        </div>
-    )
-}
-
-export default Registration
+export default Registration;

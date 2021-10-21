@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
     flex-direction: column;
    
 }
@@ -14,17 +14,27 @@
     flex-direction: column;
 }
 .project-form form input{
-    padding: 5px;
-    margin: 5px 5px  5px 0px;
+    padding: 8px;
+    margin: 5px 5px  15px 0px;
+    width: 300px;
+
+}
+.project-form form textarea{
+    padding: 8px;
+    margin: 5px 5px  15px 0px;
+    width: 300px;
+    height: 100px;
 }
 .project-form form label{
-    font-weight: bold;
+   margin-bottom: 5px;
+}
+.project-form form select{
+    padding: 8px;
 }
 .project-form form button{
-    background-color: rgb(255, 145, 0);
+    background-color: lightblue;
     border: none;
     padding: 10px 0;
-    color: white;
     margin-top: 50px;
     font-size: 15px;
 }

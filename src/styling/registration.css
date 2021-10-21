@@ -21,10 +21,9 @@
     font-weight: bold;
 }
 .registration-form form button{
-    background-color: rgb(255, 145, 0);
+    background-color: lightblue;
     border: none;
     padding: 10px 0;
-    color: white;
     margin-top: 50px;
     font-size: 15px;
 }

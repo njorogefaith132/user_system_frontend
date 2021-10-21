@@ -2,7 +2,7 @@ import {ADD_TASK, ADD_TASK_FAILED, DELETE_TASK}  from '../types/types'
 
 
 const initialState ={
-    addedtask : [],
+    addedtask : {},
     error: ''
 
 }
@@ -16,7 +16,7 @@ const taskReducer = (state= initialState, action) =>{
             }
         case ADD_TASK_FAILED:
             return {
-                addedtask : [],
+                addedtask : {},
                 error: action.payload
             }
         case DELETE_TASK:

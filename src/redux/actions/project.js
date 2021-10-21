@@ -27,7 +27,7 @@ export const  deleteProject = id =>{
 export const addproject =  project => async(dispatch)  =>{
 
     try {
-       const response =  await axios.post("http://localhost:5001/user/project/create", project)
+       const response =  await axios.post("http://localhost:5002/user/projects/create", project)
 
        const {project_id,projectname,username,project_description } = response.data.message.project
 

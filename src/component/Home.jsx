@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { Redirect, Route, useHistory } from "react-router";
 import Projects from "./Projects";
 import { useEffect } from "react";
+import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // const user = useSelector(selectUser);
@@ -15,6 +17,11 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar>
+        <Link to="">
+          <h2 className="login">Login</h2>
+        </Link>
+      </Navbar>
       {/* {user ? (
         <Route path="/project" component={Projects} />
       ) : (

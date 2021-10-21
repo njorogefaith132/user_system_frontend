@@ -27,9 +27,9 @@ export const  deleteTask = id =>{
 export const addTask =  addedtask => async(dispatch)  =>{
 
     try {
-       const response = await axios.post("http://localhost:5001/user/project/create", addedtask)
-       const {task_id, project_id, task } = response.data.message.task
-       dispatch(addTask(task_id, project_id, task ))
+       const response = await axios.post("http://localhost:5002/project/task/create", addedtask)
+       const {task_id, project_name, task, start_date, end_date } = response.data.message.task
+       dispatch(addTask(task_id,  project_name, task, start_date, end_date))
 
     } catch (error) {
         dispatch(addTaskfailed(error))
