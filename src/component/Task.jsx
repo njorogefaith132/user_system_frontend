@@ -57,19 +57,21 @@ const AddTask = () => {
       <div className="task-form">
         <h2>Add Task</h2>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="">Task Name</label>
+          <label>Task Name</label>
           <input
             type="text"
             name="taskname"
             placeholder="input task"
             onChange={handleChange}
           />
+          <label>Start Date</label>
           <input
             type="date"
             name="start_date"
             placeholder="input task start date"
             onChange={handleChange}
           />
+          <label>End Date</label>
           <input
             type="date"
             name="end_date"

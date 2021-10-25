@@ -27,6 +27,8 @@
 }
 .project-form form label{
    margin-bottom: 5px;
+   font-weight: bold;
+    color: gray;
 }
 .project-form form select{
     padding: 8px;

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Home from './component/Home';
 import Admin from './component/Admin';
 import TasksDisplay from './component/TasksDisplay';
+import Users from './component/Users';
 
 function App() {
 
@@ -21,9 +22,10 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/admindashboard" component={Admin} />
         <Route path="/tasks" component={TasksDisplay} />
+        <Route path="/users" component={Users} />
         <Route path="/task" component={Task} />
         <Route path="/project" component={Projects} />
-
+      
 
     </div>
   );

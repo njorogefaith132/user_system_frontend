@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { fetchinguser } from "../redux/actions/user";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import { getproject } from "../redux/actions/project";
 
 const Login = () => {
   const history = useHistory();
@@ -32,12 +33,15 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (state?.user?.id) {
-      history.push("/project");
-    } else {
-      console.log("hi");
+    if (state?.user?.usertype == "admin") {
+      history.push("/admindashboard");
+    } else if (state?.user?.usertype == "user") {
+      history.push("/dashboard");
+
+      dispatch(getproject(state.user.username));
     }
-    console.log("<<<<<<<<<<<", state.user.id);
+    console.log("admiin", state.user.usertype);
+    console.log("<<<<<<<<<<<", state.user.username);
   }, [state?.user?.id]);
 
   return (

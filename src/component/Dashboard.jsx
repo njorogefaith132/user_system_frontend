@@ -1,47 +1,71 @@
-import React, { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import '../styling/dashboard.css'
-import '../styling/navbar.css'
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getproject } from "../redux/actions/project";
+import "../styling/dashboard.css";
+import "../styling/navbar.css";
 
 const Dashboard = () => {
-    const history = useHistory();
+  //   const history = useHistory();
+  //   const dispatch = useDispatch();
 
+  const state = useSelector((state) => state.project);
+  const stateUser = useSelector((state) => state.user);
 
-        if(localStorage.length === 0 ) {
-            history.push('/login')
-        }
-       
-   
-    return (
-        <div>
-        <div className="navbar">
-           <Link to="/" ><h1>User System</h1></Link>
-           <div className="log-reg">
-           <Link to="/task"><h2>Add Tasks</h2></Link>
+  const [project, setProject] = useState({
+    projectname: "",
+    username: stateUser.user.username,
+    project_description: "",
+  });
 
-           </div>
+  console.log("projo", state.project.project_name);
+  useEffect(() => {
+    if (state?.project?.project_name) {
+      setProject({
+        projectname: state.project.project_name,
+        username: stateUser.user.username,
+        project_description: state.project.project_description,
+      });
+    }
+  }, []);
+
+  //   if (localStorage.length === 0) {
+  //     history.push("/login");
+  //   }
+
+  return (
+    <div>
+      <div className="navbar">
+        <Link to="/">
+          <h1>User System</h1>
+        </Link>
+        <div className="log-reg">
+          <Link to="/task">
+            <h2>Add Tasks</h2>
+          </Link>
         </div>
-        <div className="landing-page">
-            <div className="project-section">
-                <h3>Project Details</h3>
+      </div>
+      <div className="landing-page">
+        <div className="project-section">
+          <h3>Project Details</h3>
 
-                <h2>Charlie</h2>
-                <p>6.	On our users’ program, implement a cron job that checks whether a project task has been in ‘created’ state (not done)
-                     for 2 days and above and then sends an email to the user asking them to complete the task </p>
-            </div>
-            <div className="tasks-section">
-                <h4>Tasks</h4>
-                <ul>
-                    <li>create landing page</li>
-                    <li>create landing page</li>
-                    <li>create landing page</li>
-                </ul>
-            </div>
-
+          <h4>...{project.project_name}</h4>
+          <h3>{project.username}</h3>
+          <p>{project.project_description}</p>
         </div>
+        <div className="tasks-section">
+          <h4>Tasks</h4>
+          <ul>
+            <li>create landing page</li>
+            <li>create landing page</li>
+            <li>create landing page</li>
+          </ul>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

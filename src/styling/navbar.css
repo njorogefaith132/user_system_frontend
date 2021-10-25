@@ -1,17 +1,16 @@
 .navbar{
     background-color:rgb(67, 67, 151);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+   
 }
 
 .navbar a{
     text-decoration: none;
     color: white;
+    margin-right: 100px;
 }
 
-.navbar a h1,.navbar a h4{
-    margin-left: 200px;
+.navbar a h1{
+    margin-left: 100px;
 }
 .log-reg{
     display: flex;

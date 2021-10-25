@@ -10,13 +10,12 @@
     padding: 100px;
     background-color: white;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
 }
 .task-form form input{
     padding: 5px;
     margin: 5px 0px;
+    width: 300px;
 }
 .task-form form label{
     font-weight: bold;

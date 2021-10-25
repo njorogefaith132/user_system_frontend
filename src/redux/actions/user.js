@@ -57,8 +57,10 @@ export const fetchinguser =  (user) => async (dispatch) =>{
     try {
         
         const response = await axios.post("http://localhost:5001/users/login",user)
-        
-        const {id,username,password, token, usertype} = response.data.message.user
+
+        console.log(response.data.user);
+        const {id,username,password, token, usertype} = response.data.user
+        console.log(user)
          localStorage.setItem('token', token)
 
         dispatch(getUserSuccess({id,username,password,token,usertype}))
