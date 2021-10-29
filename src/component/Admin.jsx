@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import "../styling/admindash.css";
 import TasksDisplay from "./TasksDisplay";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProjects } from "../redux/actions/project";
+import { getProjectTasks } from "../redux/actions/task";
 
 const Admin = () => {
+  const { projects } = useSelector((state) => state.project);
+  const { tasks } = useSelector((state) => state.task);
+  console.log(tasks);
+
+  console.log(projects);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProjects());
+  }, []);
   return (
     <div className="user-page">
       <Navbar>
@@ -16,7 +29,6 @@ const Admin = () => {
         </Link>
       </Navbar>
       <table className="table">
-        <TasksDisplay />
         <thead>
           <tr>
             <th>#</th>
@@ -27,54 +39,28 @@ const Admin = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                View Tasks
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                View Tasks
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                View Tasks
-              </button>
-            </td>
-          </tr>
+          {projects.map((project, count) => (
+            <tr key={project.project_id}>
+              <TasksDisplay tasks={tasks} />
+              <th scope="row">{count + 1}</th>
+              <td>{project.project_name}</td>
+              <td>{project.project_description}</td>
+              <td>{project.username}</td>
+              <td>
+                <button
+                  onClick={() =>
+                    dispatch(getProjectTasks(project.project_name))
+                  }
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  View Tasks
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

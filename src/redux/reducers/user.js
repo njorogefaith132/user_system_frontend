@@ -1,7 +1,8 @@
-import { GET_USER_FAILED, GET_USER_REQUEST,GET_USER_SUCCESS, ADD_USER_SUCCESS, ADD_USER_FAILED} from '../types/types'
+import { GET_USER_FAILED, GET_USER_REQUEST,GET_USER_SUCCESS, ADD_USER_SUCCESS, ADD_USER_FAILED, GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_PROJECTS_FAILED, GET_USERS_FAILED} from '../types/types'
 
 const initialState ={
     user: {},
+    users: [],
     loading: true,
     error : ''
 }
@@ -38,6 +39,24 @@ const userReducer = ( state = initialState, action ) =>{
                 user: {},
                 error: action.payload
             }
+            case GET_USERS_REQUEST:
+                return{
+                    ...state,
+                    loading: true
+                }
+            case GET_USERS_SUCCESS:
+                return{
+                ...state,
+                loading:false,
+                users: action.users
+            }
+            case GET_USERS_FAILED:
+                return{
+                loading: false,
+                users: [],
+                error: action.payload
+            }
+      
 
     
         default: return  state

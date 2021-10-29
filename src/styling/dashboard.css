@@ -5,20 +5,45 @@
 }
 .project-section{
     width: 500px;
-    margin-left: 200px;
-    background-color: white;
+    height: auto;
+    margin: 0px 50px 100px 50px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
     padding: 50px;
+    color: white;
+    background-color: grey;
 }
-.project-section p{
+.project-section label{
+    color: blue;
+    font-size: 20px;
+}
+/* .project-section p{
     background-color: grey;
     color: white;
     padding: 20px;
-}
+} */
 .tasks-section{
     margin-right: 200px;
+    width: auto;
     background-color: white;
     padding: 50px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    border: 1px gray solid;
 }
+.task-section{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-right: 50px;
+}
+tbody tr:nth-child(odd){
+    background-color: lightgray;
+}
+/* .all_tasks{
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-width:700px
+} */

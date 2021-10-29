@@ -1,8 +1,9 @@
-import {ADD_PROJECT, ADD_PROJECT_FAILED, DELETE_PROJECT, GET_PROJECT_FAILED, GET_PROJECT_REQUEST,GET_PROJECT_SUCCESS}  from '../types/types'
+import {ADD_PROJECT, ADD_PROJECT_FAILED, DELETE_PROJECT, GET_PROJECTS_FAILED, GET_PROJECTS_REQUEST, GET_PROJECTS_SUCCESS, GET_PROJECT_FAILED, GET_PROJECT_REQUEST,GET_PROJECT_SUCCESS}  from '../types/types'
 
 
 const initialState ={
     project : {},
+    projects: [],
     loading:true,
     error: ''
 
@@ -40,6 +41,23 @@ const projectReducer = (state= initialState, action) =>{
         return{
             loading: false,
             project: {},
+            error: action.payload
+        }
+        case GET_PROJECTS_REQUEST:
+            return{
+                ...state,
+                loading: true
+            }
+        case GET_PROJECTS_SUCCESS:
+            return{
+            ...state,
+            loading:false,
+            projects: action.projects
+        }
+        case GET_PROJECTS_FAILED:
+            return{
+            loading: false,
+            projects: [],
             error: action.payload
         }
     

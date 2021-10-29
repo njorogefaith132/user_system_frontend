@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {ADD_PROJECT,ADD_PROJECT_FAILED, DELETE_PROJECT, GET_PROJECT_FAILED, GET_PROJECT_REQUEST,GET_PROJECT_SUCCESS}  from '../types/types'
+import {ADD_PROJECT,ADD_PROJECT_FAILED, DELETE_PROJECT, GET_PROJECTS_FAILED, GET_PROJECTS_REQUEST, GET_PROJECTS_SUCCESS, GET_PROJECT_FAILED, GET_PROJECT_REQUEST,GET_PROJECT_SUCCESS}  from '../types/types'
 
 
 
@@ -42,6 +42,24 @@ export const getProjectFailed =(error) =>{
         payload: error
     })
 }
+export const getProjectsRequest = () =>{
+    return ({
+        type: GET_PROJECTS_REQUEST
+    })
+}
+
+export const getProjectsSuccess = (projects) =>{
+    return( {
+        type: GET_PROJECTS_SUCCESS,
+        projects
+    })
+}
+export const getProjectsFailed =(error) =>{
+    return ({
+        type: GET_PROJECTS_FAILED,
+        payload: error
+    })
+}
 export const addproject =  project => async(dispatch)  =>{
 
     try {
@@ -68,5 +86,21 @@ export const getproject =  username => async(dispatch)  =>{
 
     } catch (error) {
         dispatch(getProjectFailed(error))
+    }
+}
+
+export const getAllProjects =  () => async(dispatch)  =>{
+    dispatch(getProjectsRequest());
+
+    try {
+       const response =  await axios.get("http://localhost:5002/user/projects/all")
+    //    console.log(response.data);
+
+       const projects = response.data
+
+       dispatch(getProjectsSuccess(projects))
+
+    } catch (error) {
+        dispatch(getProjectsFailed(error))
     }
 }

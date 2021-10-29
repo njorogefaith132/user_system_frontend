@@ -11,6 +11,7 @@ import { fetchinguser } from "../redux/actions/user";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { getproject } from "../redux/actions/project";
+import { getProjectTasks } from "../redux/actions/task";
 
 const Login = () => {
   const history = useHistory();
@@ -37,8 +38,6 @@ const Login = () => {
       history.push("/admindashboard");
     } else if (state?.user?.usertype == "user") {
       history.push("/dashboard");
-
-      dispatch(getproject(state.user.username));
     }
     console.log("admiin", state.user.usertype);
     console.log("<<<<<<<<<<<", state.user.username);
@@ -58,6 +57,7 @@ const Login = () => {
             name="username"
             type="text"
             placeholder="input username"
+            required
             onChange={onChange}
           />
 
@@ -65,6 +65,7 @@ const Login = () => {
           <input
             name="password"
             type="text"
+            required
             placeholder="input password"
             onChange={onChange}
           />

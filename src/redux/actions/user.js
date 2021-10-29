@@ -1,4 +1,4 @@
-import {GET_USER_SUCCESS, GET_USER_FAILED, GET_USER_REQUEST, ADD_USER_FAILED,ADD_USER_SUCCESS} from '../types/types'
+import {GET_USER_SUCCESS, GET_USER_FAILED, GET_USER_REQUEST, ADD_USER_FAILED,ADD_USER_SUCCESS, GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILED} from '../types/types'
 import axios from 'axios'
 
 export const addUserAction = (user) =>{
@@ -51,6 +51,25 @@ export const getUserFailed =(error) =>{
     })
 }
 
+export const getUsersRequest = () =>{
+    return ({
+        type: GET_USERS_REQUEST
+    })
+}
+
+export const getUsersSuccess = (users) =>{
+    return( {
+        type: GET_USERS_SUCCESS,
+        users
+    })
+}
+export const getUsersFailed =(error) =>{
+    return ({
+        type: GET_USERS_FAILED,
+        payload: error
+    })
+}
+
 export const fetchinguser =  (user) => async (dispatch) =>{
     dispatch(getUserRequest())
 
@@ -68,5 +87,20 @@ export const fetchinguser =  (user) => async (dispatch) =>{
     } catch (error) {
        dispatch(getUserFailed(error))
         
+    }
+}
+export const getAllUsers =  () => async(dispatch)  =>{
+    dispatch(getUsersRequest());
+
+    try {
+       const response =  await axios.get("http://localhost:5001/users/all")
+    //    console.log(response.data);
+
+       const users = response.data
+
+       dispatch(getUsersSuccess(users))
+
+    } catch (error) {
+        dispatch(getUsersFailed(error))
     }
 }

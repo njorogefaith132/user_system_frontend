@@ -17,15 +17,15 @@ function App() {
 
   return (
     <div className="App">
-        <Route exact path="/register" component={Registration} /> 
-        <Route exact path="/login" component={Login} />
+      <Route path="/" exact component={Home}/>
+        <Route  path="/register" component={Registration} /> 
+        <Route  path="/login" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/admindashboard" component={Admin} />
         <Route path="/tasks" component={TasksDisplay} />
         <Route path="/users" component={Users} />
         <Route path="/task" component={Task} />
         <Route path="/project" component={Projects} />
-      
 
     </div>
   );

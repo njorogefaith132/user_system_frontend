@@ -1,32 +1,23 @@
 import React from "react";
-
-// import { selectUser } from "../redux/reducers/userreducer";
-import { useSelector } from "react-redux";
-import { Redirect, Route, useHistory } from "react-router";
-import Projects from "./Projects";
-import { useEffect } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 const Home = () => {
-  // const user = useSelector(selectUser);
-  const history = useHistory();
-  // useEffect(() => {
-  //   if (user?.id) history.push("/project");
-  // }, [user, history]);
-
   return (
     <div>
       <Navbar>
-        <Link to="">
+        <Link to="/login">
           <h2 className="login">Login</h2>
         </Link>
+        <Link to="/register">
+          <h2 className="Register">Register</h2>
+        </Link>
       </Navbar>
-      {/* {user ? (
-        <Route path="/project" component={Projects} />
-      ) : (
-        <Redirect to="/login" />
-      )} */}
+      <div className="welcome-section">
+        {/* <img src={"../styling/Images/land.png"} alt="image" /> */}
+        <h1>Welcome to The User System</h1>
+      </div>
     </div>
   );
 };

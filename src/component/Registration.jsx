@@ -70,6 +70,7 @@ const Registration = () => {
           <input
             type="checkbox"
             name="admin"
+            value={"admin"}
             // checked={ischecked}
             onChange={ischecked}
             placeholder="input password"

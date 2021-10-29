@@ -1,7 +1,8 @@
 import React from "react";
 import "../styling/taskdisplay.css";
 
-const TasksDisplay = () => {
+const TasksDisplay = ({ tasks }) => {
+  console.log(tasks);
   return (
     <div>
       <div
@@ -16,7 +17,7 @@ const TasksDisplay = () => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Task title
+                Project Tasks
               </h5>
 
               <button
@@ -29,22 +30,11 @@ const TasksDisplay = () => {
               </button>
             </div>
             <div class="modal-body">
-              <ul>
-                <li>make designs</li>
-                <li>make simulations</li>
-                <li>write oroposal</li>
-                <li>make designs</li>
-                <li>make designs</li>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
+              {tasks.map((task) => (
+                <ul key={task.task_id}>
+                  <li>{task.task}</li>
+                </ul>
+              ))}
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { addTask } from "../redux/actions/task";
 
 import "../styling/navbar.css";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const AddTask = () => {
   const history = useHistory();
@@ -44,16 +45,11 @@ const AddTask = () => {
 
   return (
     <div>
-      <div className="navbar">
-        <Link to="/">
-          <h1>User System</h1>
+      <Navbar>
+        <Link to="/dashboard">
+          <h3>Dashboard</h3>
         </Link>
-        <div className="log-reg">
-          <Link to="/login">
-            <h2>Login</h2>
-          </Link>
-        </div>
-      </div>
+      </Navbar>
       <div className="task-form">
         <h2>Add Task</h2>
         <form onSubmit={handleSubmit}>
